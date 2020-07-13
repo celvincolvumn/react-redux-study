@@ -1,11 +1,11 @@
 import React from "react";
 import DisplayNumber from "./DisplayNumber";
 
-function DisplayNumberBox() {
+function DisplayNumberBox(props) {
   return (
     <div>
       <h1>Display Number Box</h1>
-      <DisplayNumber></DisplayNumber>
+      <DisplayNumber numebr={props.number}></DisplayNumber>
     </div>
   );
 }
