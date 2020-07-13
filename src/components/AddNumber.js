@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import store from "../store/store";
 
 function AddNumber(props) {
   const [size, setSize] = useState(1);
 
   function handleChange(e) {
-    setSize(e.target.value);
+    setSize(e.target.value + size);
   }
 
   function handleClick(e) {
-    props.onClick(size);
+    store.dispatch({ type: "INCREMENT", size });
   }
 
   return (
