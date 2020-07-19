@@ -1,24 +1,34 @@
-import React, { useState } from "react";
-import store from "../store/store";
+import React, { Component } from "react";
 
-function AddNumber(props) {
-  const [size, setSize] = useState(1);
-
-  function handleChange(e) {
-    setSize(e.target.value + size);
+class AddNumber extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      size: 1,
+    };
   }
 
-  function handleClick(e) {
-    store.dispatch({ type: "INCREMENT", size });
+  render() {
+    return (
+      <div>
+        <h1>Add Number</h1>
+        <input
+          type="button"
+          value="+"
+          onClick={(e) => {
+            this.props.onClick(this.state.size);
+          }}
+        ></input>
+        <input
+          type="text"
+          value={this.state.size}
+          onChange={(e) => {
+            this.setState({ size: Number(e.target.value) });
+          }}
+        ></input>
+      </div>
+    );
   }
-
-  return (
-    <div>
-      <h1>Add Number</h1>
-      <input type="button" value="+" onClick={handleClick}></input>
-      <input type="text" value={size} onChange={handleChange}></input>
-    </div>
-  );
 }
 
 export default AddNumber;

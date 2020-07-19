@@ -1,18 +1,14 @@
-import React, { useState } from "react";
-import store from "../store/store";
+import React, { Component } from "react";
 
-function DisplayNumber(props) {
-  const [number, setNumber] = useState();
-  store.subscribe(() => {
-    setNumber(store.getState().number);
-  });
-
-  return (
-    <div>
-      <h1>Display Number</h1>
-      <input type="text" value={number} readOnly></input>
-    </div>
-  );
+class DisplayNumber extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Display Number</h1>
+        <input type="text" value={this.props.number} readOnly></input> {this.props.unit}
+      </div>
+    );
+  }
 }
 
 export default DisplayNumber;

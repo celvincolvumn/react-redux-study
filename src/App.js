@@ -1,24 +1,28 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 
 import AddNumberBox from "./components/AddNumberBox";
-import DispalyNumberBox from "./components/DispalyNumberBox";
+import DisplayNumberBox from "./components/DisplayNumberBox";
 
 import "./App.css";
 
-function App() {
-  const [number, setNumber] = useState(0);
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-  const handelClick = (size) => {
-    setNumber(number + size);
-  };
+    this.state = {
+      number: 0,
+    };
+  }
 
-  return (
-    <div className="App">
-      <h1>Wrapper</h1>
-      <AddNumberBox onClick={handelClick}></AddNumberBox>
-      <DispalyNumberBox number={number}></DispalyNumberBox>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <h1>Wrapper</h1>
+        <AddNumberBox></AddNumberBox>
+        <DisplayNumberBox></DisplayNumberBox>
+      </div>
+    );
+  }
 }
 
 export default App;
